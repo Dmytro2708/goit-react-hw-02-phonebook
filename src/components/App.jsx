@@ -4,6 +4,11 @@ import { nanoid } from 'nanoid';
 import { Contacts } from './Contacts/Contacts';
 import { NameInput } from './NameInput/NameInput';
 import { Filter } from './Filter/Filter';
+import { Container } from './GlobalStyle';
+
+
+
+
 
 export class App extends Component {
   state = {
@@ -44,14 +49,14 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>Phonebook</h1>
         <NameInput addstate={this.addContact} state={this.state} />
         <h2>Contacts</h2>
         <Filter filter={this.getFilter} />
         <Contacts state={this.state} delContact={this.delContact} />
         <GlobalStyle />
-      </div>
+      </Container>
     );
   }
 }

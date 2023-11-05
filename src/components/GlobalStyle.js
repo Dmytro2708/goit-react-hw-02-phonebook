@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import 'modern-normalize';
-
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -16,4 +16,14 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }  
+`;
+
+export const Container = styled.div`
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #010101;
+  h2 {
+    margin-bottom: 0;
+  }
 `;

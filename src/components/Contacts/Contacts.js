@@ -1,14 +1,16 @@
+import { ContactsList, ContactEl } from "./Contacts.styled";
+
 export function Contacts({ state, delContact }) {
   return (
     <>
-      <ul>
+      <ContactsList>
         {state.contacts.map(e => {
           if (!e.name.toLowerCase().includes(state.filter)) {
             return null;
           }
 
           return (
-            <li key={e.id}>
+            <ContactEl key={e.id}>
               <p>
                 {e.name}: {e.number}
               </p>
@@ -20,10 +22,10 @@ export function Contacts({ state, delContact }) {
               >
                 Delete
               </button>
-            </li>
+            </ContactEl>
           );
         })}
-      </ul>
+      </ContactsList>
     </>
   );
 }

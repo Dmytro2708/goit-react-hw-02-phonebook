@@ -17,8 +17,14 @@ input {
         
 }
 button {
-        width: 100px;
-    background-color: #d4e5f6;
+    width: 100px;
+    cursor: pointer;
+    background-color: orange;
     border-radius: 5px;
     border: none;
+    &:hover {
+        background-color: blueviolet;
+        color: #fff;
+        transform: scale(1.1);
+    }
 }`;
