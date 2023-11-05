@@ -1,16 +1,57 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      Hello world!
-    </div>
-  );
-};
+import { Component } from 'react';
+import { GlobalStyle } from './GlobalStyle';
+import { nanoid } from 'nanoid';
+import { Contacts } from './Contacts/Contacts';
+import { NameInput } from './NameInput/NameInput';
+import { Filter } from './Filter/Filter';
+
+export class App extends Component {
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+    name: '',
+    number: '',
+  };
+
+  addContact = cont => {
+    this.setState(prevState => {
+      cont.id = nanoid();
+      return {
+        contacts: [cont, ...prevState.contacts],
+      };
+    });
+  };
+
+  delContact = cont => {
+    this.setState(({ contacts }) => {
+      return {
+        contacts: contacts.filter(e => e.id !== cont),
+      };
+    });
+  };
+
+  getFilter = value => {
+    let name = value.currentTarget.value.toLowerCase();
+    this.setState({
+      filter: name,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Phonebook</h1>
+        <NameInput addstate={this.addContact} state={this.state} />
+        <h2>Contacts</h2>
+        <Filter filter={this.getFilter} />
+        <Contacts state={this.state} delContact={this.delContact} />
+        <GlobalStyle />
+      </div>
+    );
+  }
+}
