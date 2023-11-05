@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field } from 'formik';
 import { StyledForm } from './NameInput.styled';
 
 export const NameInput = ({ addstate, state }) => {
