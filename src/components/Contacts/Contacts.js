@@ -1,11 +1,11 @@
-import { ContactsList, ContactEl } from "./Contacts.styled";
+import { ContactsList, ContactEl } from './Contacts.styled';
 
-export function Contacts({ state, delContact }) {
+export function Contacts({ contacts, filter, delContact }) {
   return (
     <>
       <ContactsList>
-        {state.contacts.map(e => {
-          if (!e.name.toLowerCase().includes(state.filter)) {
+        {contacts.map(e => {
+          if (!e.name.toLowerCase().includes(filter)) {
             return null;
           }
 

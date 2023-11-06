@@ -19,8 +19,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = cont => {
@@ -47,14 +45,17 @@ export class App extends Component {
     });
   };
 
+  
   render() {
+    const { contacts, filter } = this.state;
     return (
+      
       <Container>
         <h1>Phonebook</h1>
         <NameInput addstate={this.addContact} state={this.state} />
         <h2>Contacts</h2>
         <Filter filter={this.getFilter} />
-        <Contacts state={this.state} delContact={this.delContact} />
+        <Contacts contacts={contacts} filter={filter} delContact={this.delContact} />
         <GlobalStyle />
       </Container>
     );
